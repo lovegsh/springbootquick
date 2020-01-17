@@ -1,0 +1,44 @@
+server:
+  port: 8080
+#spring:
+#  profiles:
+#    active: prod
+
+
+#logging:
+#  file:
+#    name: logs.log
+#    path: /
+spring:
+  messages:
+    basename: i18n.login
+  thymeleaf:
+    cache: false
+---
+server:
+  port: 8081
+spring:
+  profiles: dev
+---
+server:
+  port: 8082
+  servlet:
+    context-path: /boot  #server.servlet.context-path:  配置项目访问路径
+spring:
+  profiles: prod
+
+
+
+#person:
+#  last-name: "张三"
+#  age: 24
+#  birth: 2000/1/1
+#  bool: true
+#  list: ["a","b"]
+##  list:
+##    - a
+##    - b
+#  map: {k1: v1,k2: v2}
+#  dog:
+#    name: dd
+#    age: 2
