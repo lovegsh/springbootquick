@@ -14,6 +14,8 @@ spring:
     basename: i18n.login
   thymeleaf:
     cache: false
+#  mvc:
+#    static-path-pattern: /static/**
 ---
 server:
   port: 8081
