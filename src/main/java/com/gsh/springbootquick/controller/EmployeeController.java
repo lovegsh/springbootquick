@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.Collection;
 
@@ -46,8 +48,32 @@ public class EmployeeController {
     //员工添加
     @PostMapping("/emp")
     public String addEmp(Employee employee){
-        System.out.println("保存的员工信息： "+employee);
+        System.out.println("添加的员工信息： "+employee);
+        employeeDao.save(employee);
         //来到员工列表页面   redirect: 重定向   forward: 转发
         return "redirect:/emps";
     }
+
+    //来到修改页面，查出当前员工信息，在页面回显
+    @GetMapping("/emp/{id}")
+    public String toEditPage(@PathVariable Integer id, Model model){
+        Employee employee = employeeDao.get(id);
+        model.addAttribute("emp", employee);
+        //显示所有部门列表
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts",departments);
+        //回到修改页面（和添加页面公用）
+        return "emp/add";
+    }
+
+    //员工修改
+    @PutMapping("/emp")
+    public String updateEmployee(Employee employee){
+        System.out.println("员工修改的数据： "+employee);
+        employeeDao.save(employee);
+
+        return "redirect:/emps";
+    }
+
+
 }

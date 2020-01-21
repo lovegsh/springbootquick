@@ -15,6 +15,7 @@ spring:
   thymeleaf:
     cache: false
 #  mvc:
+#    date-format: yyyy-MM-dd #默认时间格式为2020/01/20
 #    static-path-pattern: /static/**
 ---
 server:
