@@ -1,7 +1,6 @@
 package com.gsh.springbootquick;
 
-import com.gsh.springbootquick.bean.Person;
-import com.gsh.springbootquick.service.HelloService;
+import com.gsh.springbootquick.system.bean.Person;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;

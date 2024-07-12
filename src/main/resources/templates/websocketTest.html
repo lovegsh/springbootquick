@@ -1,0 +1,48 @@
+<!DOCTYPE  html>
+<html>
+<head>
+    <title>Websocket Demo</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        var socket;
+
+        function openSocket() {
+            socket = new WebSocket("ws://localhost:8081/ws");
+            console.log("socket  opened");
+            socket.onopen = function () {
+                console.log("connection  established...");
+            };
+
+            socket.onclose = function (event) {
+                console.log('Socket  is  closed.  Reconnect  will  be  attempted  in  1  second.', event.reason);
+                setTimeout(function () {
+                    openSocket();
+                }, 1000);
+            };
+
+            socket.onerror = function (error) {
+                console.log('Socket  encountered  error:  ', error.message);
+                socket.close();
+            };
+        }
+
+        function sendMsg() {
+            var msg = document.getElementById("msg").value;
+            console.log("sending msg:  " + msg);
+            socket.send(msg);
+        }
+
+        function closeSocket() {
+            console.log( "closing socket" );
+            socket.close();
+        }
+    </script>
+</head>
+<body>
+    <h1>Websocket Example</h1>
+    <button onclick="openSocket()">Open Socket</button>
+    <input type="text" id="msg"/>
+    <button onclick="sendMsg()">Send Message</button>
+    <button onclick="closeSocket()">Close Socket</button>
+</body>
+</html>

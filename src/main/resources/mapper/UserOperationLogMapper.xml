@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsh.springbootquick.system.mapper.UserOperationLogMapper">
+
+    <resultMap type="com.gsh.springbootquick.system.entity.UserOperationLog" id="BaseResultMap">
+
+    </resultMap>
+
+    <select id="selectAllByIds" parameterType="java.util.List" resultType="com.gsh.springbootquick.system.entity.UserOperationLog">
+        select * from user_operation_log
+        <where>
+            id in
+            <foreach collection="list" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+<!--            <if test="list != null and list.size() > 0">-->
+<!--                id in (${list})-->
+<!--            </if>-->
+        </where>
+    </select>
+
+    <select id="selectAllByIds2" parameterType="java.util.List" resultType="com.gsh.springbootquick.system.entity.UserOperationLog">
+        select * from user_operation_log where
+        <where>
+            <if test="list != null and list.size() > 0">
+                id in (#{list})
+            </if>
+        </where>
+    </select>
+
+</mapper>
+

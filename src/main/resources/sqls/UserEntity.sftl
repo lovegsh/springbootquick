@@ -1,0 +1,11 @@
+--selectById
+select id, username, num from user where id = :id
+
+-- selectDtoById
+select id, username, num from user where id = :id
+
+-- selectDtoById2
+select id, username, password, num from user where id = :id
+
+-- selectDtoById3
+select username, num from user where id = :id

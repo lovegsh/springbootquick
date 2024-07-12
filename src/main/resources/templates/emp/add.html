@@ -54,10 +54,11 @@
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<form th:action="@{/emp}" method="post">
-                    <!--	发送put请求修改员工数据
+                    	<!--	发送put请求修改员工数据
                     	1、springboot中配置HiddenHttpMethodFilter（springboot自动配置好的）
                     	2、页面创建一个post表单
-                    	3、创建一个input项，name="_method" 值是指定的请求方式-->
+                    	3、创建一个input项，name="_method" 值是指定的请求方式
+                    	-->
 						<input type="hidden" name="_method" value="put" th:if="${emp!=null}"/>
 						<input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.id}"/>
 						<div class="form-group">

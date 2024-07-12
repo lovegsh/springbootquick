@@ -74,10 +74,10 @@
 									<td th:text="${emp.email}"></td>
 									<td th:text="${emp.gender}"></td>
 									<td th:text="${emp.department.departmentName}"></td>
-									<td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td>
+									<td th:text="${#dates.format(emp.birth, 'yyyy/MM/dd HH:mm')}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
-										<button class="btn btn-sm btn-danger">删除</button>
+										<button th:attr="del_uri=@{/emp/}+${emp.id}"  class="btn btn-sm btn-danger deleteBtn">删除</button>
 									</td>
 								</tr>
 
@@ -85,6 +85,9 @@
 						</table>
 					</div>
 				</main>
+				<form id="deleteEmpForm" method="post">
+					<input type="hidden" name="_method" value="delete"/>
+				</form>
 			</div>
 		</div>
 
@@ -103,6 +106,15 @@
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="../../static/asserts/js/Chart.min.js"></script>
+
+		<script>
+			$(".deleteBtn").click(function () {
+				//删除当前员工
+				$("#deleteEmpForm").attr("action", $(this).attr("del_uri")).submit();
+				return false;//取消默认行为
+			})
+		</script>
+
 		<script>
 			var ctx = document.getElementById("myChart");
 			var myChart = new Chart(ctx, {

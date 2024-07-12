@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+
+<div id="app" v-bind:title="message">
+    {{message}}
+
+    <h1 v-if="type">Yes</h1>
+    <h1 v-else>No</h1>
+    <hr/>
+    <li v-for="(item,index) in items">
+        {{item.message}}---{{index}}
+    </li>
+    <hr/>
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+    <hr/>
+    <button v-on:click="greet">welcome</button>
+    <hr/>
+    双向绑定:<input v-model="msg">{{msg}}
+    <hr/>
+    <textarea v-model="message"></textarea>{{message}}
+    <hr/>
+    <input type="radio" id="one" value="男" v-model="picked">男
+    <br>
+    <input type="radio" id="two" value="女" v-model="picked">女
+    <br>
+    <span>Picked: {{ picked }}</span>
+    <hr/>
+    <div>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <hr/>
+    <div>
+        <select v-model="select">
+            <option disabled>--请选择--</option>
+            <option>aa</option>
+            <option>bb</option>
+            <option>cc</option>
+        </select>
+        {{select}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg: '',
+            message:"hello,vue!",
+            type: true,
+            items:[
+                {message:'apple'},
+                {message:'egg'},
+                {message:'banana'}
+            ],
+            counter: 0,
+            picked: '',
+            checkedNames: [],
+            select: '',
+        },
+        methods:{
+            greet:function () {
+                alert("hello")
+            }
+        }
+    });
+</script>
+</body>
+</html>
