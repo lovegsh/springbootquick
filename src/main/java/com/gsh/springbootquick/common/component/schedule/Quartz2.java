@@ -20,11 +20,7 @@ public class Quartz2 extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         log.error("我是task2222，我将执行2s钟，线程名字 == > {} , 现在时间为 == > {}", Thread.currentThread().getId(), LocalTime.now());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
         log.error("我是task2222，我已执行完成，线程名字 == > {} , 现在时间为 == > {}",Thread.currentThread().getId(), LocalTime.now());
     }
 }

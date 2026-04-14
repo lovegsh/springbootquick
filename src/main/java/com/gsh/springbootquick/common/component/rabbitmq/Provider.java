@@ -24,11 +24,10 @@ public class Provider {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
+
     public static void main(String[] args) {
 
     }
-
-
 
 
 

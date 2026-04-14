@@ -1,4 +1,4 @@
-package com.gsh.springbootquick.test;
+package com.gsh.springbootquick.test.threadlocal;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;

@@ -1,11 +1,8 @@
-package com.gsh.springbootquick.test;
+package com.gsh.springbootquick.test.threadlocal;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.*;
 
 /**
